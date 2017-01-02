@@ -3,6 +3,7 @@ import { Header, Segment, Input, Menu } from 'semantic-ui-react';
 import { hashToQuery } from '../utils';
 import FeatureManPage from './FeatureManPage';
 import FeatureToolPage from './FeatureToolPage';
+import FeaturePresetPage from './FeaturePresetPage';
 
 export default class CommandPageContainer extends React.Component {
     constructor(props) {
@@ -78,7 +79,9 @@ export default class CommandPageContainer extends React.Component {
         if(this.state.displayPage === 'manPage') {
             return <FeatureManPage command={this.state.command} />;
         } else if(this.state.displayPage === 'tool') {
-            return <FeatureToolPage />;
+            return <FeatureToolPage command={this.state.command} />;
+        } else if(this.state.displayPage === 'preset') {
+            return <FeaturePresetPage />;
         }
 
         return null;

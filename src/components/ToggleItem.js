@@ -8,16 +8,34 @@ class ToggleItem extends React.Component {
         this.state = {
             isToggled: props.defaultToggle,
         };
+
+        this.handleOnToggle = this.handleOnToggle.bind(this);
+    }
+
+    handleOnToggle() {
+        this.props.onToggle(!this.state.isToggled);
+        this.setState({ isToggled: !this.state.isToggled });
     }
 
     render() {
-        return (
-            <Item>
-                <Item.Image as={() => <Button positive={this.props.defaultToggle}>On</Button>} />
-                <Item.Content verticalAlign="middle">
+        return(
+            <Item style={{ marginLeft: 5 }}>
+                <Item.Image
+                  as={() => <Button
+                              basic={!this.state.isToggled}
+                              onClick={this.handleOnToggle}
+                              positive={this.state.isToggled}
+                            >
+                                {this.state.isToggled ? 'On' : 'Off'}
+                            </Button>}
+                />
+                <Item.Content verticalAlign="middle" style={{ padding: '15px 3px 10px 3px', textAlign: 'left' }}>
                     <Item.Header>
                         {this.props.header}
                     </Item.Header>
+                    <Item.Meta>
+                        {this.props.description}
+                    </Item.Meta>
                     <Item.Description>
                         {this.props.children}
                     </Item.Description>
@@ -29,9 +47,18 @@ class ToggleItem extends React.Component {
 
 ToggleItem.propTypes = {
     defaultToggle: React.PropTypes.bool,
-    onChange: React.PropTypes.func,
-    children: React.PropTypes.any,
-    header: React.PropTypes.any,
+    onToggle: React.PropTypes.func,
+    children: React.PropTypes.node,
+    header: React.PropTypes.node,
+    description: React.PropTypes.node,
+};
+
+ToggleItem.defaultProps = {
+    defaultToggle: false,
+    onToggle: () => {},
+    children: null,
+    header: '',
+    description: '',
 };
 
 export default ToggleItem;

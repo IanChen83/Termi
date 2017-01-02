@@ -10,7 +10,7 @@ export default class FeatureManPage extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`/api/commands/${this.props.command}`)
+        fetch(`/api/commands/man/${this.props.command}`)
         .then(res => res.json())
         .then((content) => {
             this.setState({ content: content.data });

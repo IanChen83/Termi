@@ -55,15 +55,15 @@ export default class App extends React.Component {
         return(
             <Grid centered>
                 <Grid.Row>
-                    <Grid.Column width={8} verticalAlign="bottom">
+                    <Grid.Column width={6} verticalAlign="bottom">
                         <h1 style={{ textAlign: 'left', marginTop: 20 }}><Icon name="terminal" color="blue" />Termi</h1>
                     </Grid.Column>
-                    <Grid.Column width={2} verticalAlign="bottom">
+                    <Grid.Column width={6} verticalAlign="bottom" style={{textAlign: 'right'}}>
                         {this.renderBreadCrumb()}
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
-                    <Grid.Column width={10}>
+                    <Grid.Column width={12}>
                         {this.renderRoute()}
                     </Grid.Column>
                 </Grid.Row>
